@@ -18,10 +18,9 @@ from pathlib import Path
 
 import torch
 
-from config import config_dict, load_config
+from config import build_fa_config, config_dict, load_config, seed_everything
 from fa_model import SpectraSafeAnonymizer
 from heads import build_heads
-from runtime import build_fa_config, seed_everything
 
 
 def initialization_state(config, fa, ft, fb) -> dict:

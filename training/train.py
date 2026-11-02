@@ -12,11 +12,16 @@ import torch.nn as nn
 from sklearn.metrics import average_precision_score, f1_score
 from torchvision.utils import save_image
 
-from config import config_dict, load_config, rho_for_epoch
+from config import (
+    build_fa_config,
+    config_dict,
+    load_config,
+    rho_for_epoch,
+    seed_everything,
+)
 from data import make_loader
 from fa_model import SpectraSafeAnonymizer
 from heads import build_heads, sample_frame_indices
-from runtime import build_fa_config, seed_everything
 
 
 def set_trainable(model: nn.Module, enabled: bool) -> None:

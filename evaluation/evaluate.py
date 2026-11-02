@@ -9,11 +9,10 @@ import json
 import torch
 import torch.nn as nn
 
-from config import load_config
+from config import build_fa_config, load_config, seed_everything
 from data import make_loader
 from fa_model import SpectraSafeAnonymizer
 from heads import build_heads
-from runtime import build_fa_config, seed_everything
 from training.train import validate
 
 

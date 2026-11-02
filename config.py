@@ -5,9 +5,15 @@ from __future__ import annotations
 
 import json
 import os
+import random
 from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
 from typing import List
+
+import numpy as np
+import torch
+
+from fa_model import FAConfig
 
 
 @dataclass
@@ -175,3 +181,24 @@ def rho_for_epoch(epoch: int) -> float:
     if epoch <= 10:
         return 0.4 * float(epoch - 1) / 9.0
     return min(1.0, 0.4 + 0.6 * float(epoch - 10) / 20.0)
+
+
+def seed_everything(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+
+def build_fa_config(config: ExperimentConfig) -> FAConfig:
+    return FAConfig(
+        num_frames=config.num_frames,
+        image_size=config.image_size,
+        num_blocks=config.anonymizer_blocks,
+        seed=config.seed,
+        mask_skin_weight=config.mask_skin_weight,
+        mask_motion_weight=config.mask_motion_weight,
+        mask_power=config.mask_power,
+        policy_bf16=config.policy_bf16,
+        fft_point_hidden_dim=config.fft_point_hidden_dim,
+    )

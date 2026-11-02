@@ -19,7 +19,7 @@ from pathlib import Path
 import torch
 
 from config import config_dict, load_config
-from fa_model import FrequencyAnonymizer
+from fa_model import SpectraSafeAnonymizer
 from heads import build_heads
 from runtime import build_fa_config, seed_everything
 
@@ -56,7 +56,7 @@ def main() -> None:
     # optimizer, loss, backward pass, or training loop exists in this stage.
     # Keep all tensors on CPU so initialization does not require or reserve a
     # GPU and produces a portable checkpoint.
-    fa = FrequencyAnonymizer(build_fa_config(config))
+    fa = SpectraSafeAnonymizer(build_fa_config(config))
     ft, fb = build_heads(config)
 
     output = (

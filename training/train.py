@@ -14,7 +14,7 @@ from torchvision.utils import save_image
 
 from config import config_dict, load_config, rho_for_epoch
 from data import make_loader
-from fa_model import FrequencyAnonymizer
+from fa_model import SpectraSafeAnonymizer
 from heads import build_heads, sample_frame_indices
 from runtime import build_fa_config, seed_everything
 
@@ -318,7 +318,7 @@ def main() -> None:
             f"or pass --initialization-checkpoint. Expected: {initialization_checkpoint}"
         )
 
-    fa = FrequencyAnonymizer(build_fa_config(config)).to(device)
+    fa = SpectraSafeAnonymizer(build_fa_config(config)).to(device)
     # Initialization or resume checkpoints provide the initial head weights;
     # avoid importing them a second time here.
     ft, fb = build_heads(config, pretrained=False); ft = ft.to(device); fb = fb.to(device)

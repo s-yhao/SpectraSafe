@@ -836,5 +836,3 @@ class SpectraSafeAnonymizer(nn.Module):
 
     def forward_with_intermediates(self, x: Tensor, strength: float = 1.0):
         return self._forward_impl(x, strength=strength, return_intermediates=True)
-
-FrequencyAnonymizer = SpectraSafeAnonymizer

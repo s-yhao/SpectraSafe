@@ -14,7 +14,7 @@ from data import make_loader
 from fa_model import FrequencyAnonymizer
 from heads import build_heads
 from runtime import build_fa_config, seed_everything
-from train import validate
+from training.train import validate
 
 
 def load_checkpoint(path: str, fa, ft, fb) -> dict:

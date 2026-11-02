@@ -101,7 +101,7 @@ heads.py          Action and privacy evaluators
 
 ## Release Note
 
-This is a clean, dependency-flattened implementation reconstructed from the final paper specification and audited historical experiments. It has not yet been numerically verified as a standalone release. See [PROVENANCE.md](PROVENANCE.md) for the audit boundary.
+This is a clean, dependency-flattened implementation reconstructed from the final paper specification and audited historical experiments. It has not yet been numerically verified as a standalone release.
 
 ## Contact
 
